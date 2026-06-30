@@ -22,11 +22,13 @@ if (isset($_COOKIE[session_name()])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #F7931E 0%, #fa9911  100%);
+            /* ─── UBAH BACKGROUND MENJADI GRADASI BIRU SOFT SEJUK ─── */
+            background: linear-gradient(135deg, #A2C2E8 0%, #7AA0CD 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         .logout-card {
@@ -34,13 +36,15 @@ if (isset($_COOKIE[session_name()])) {
             border-radius: 20px;
             padding: 3rem;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(44, 62, 80, 0.15);
             max-width: 400px;
+            border: none;
         }
         
         .logout-icon {
             font-size: 4rem;
-            color: #28a745;
+            /* ─── UBAH WARNA ICON CHECK MENJADI BIRU AGAR SERASI ─── */
+            color: #7AA0CD;
             margin-bottom: 1rem;
             animation: checkmark 0.5s ease-in-out;
         }
@@ -51,8 +55,25 @@ if (isset($_COOKIE[session_name()])) {
             100% { transform: scale(1); }
         }
         
+        /* ─── KUSTOMISASI WARNA SPINNER LOADING ─── */
         .spinner-border {
             margin-top: 1rem;
+            color: #7AA0CD !important;
+        }
+
+        h3 {
+            color: #2C3E50;
+            font-weight: 700;
+        }
+
+        a {
+            color: #7AA0CD;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            color: #2C3E50;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -61,7 +82,7 @@ if (isset($_COOKIE[session_name()])) {
         <i class="fas fa-check-circle logout-icon"></i>
         <h3 class="mb-3">Logout Berhasil!</h3>
         <p class="text-muted mb-3">Anda telah keluar dari sistem.</p>
-        <div class="spinner-border text-primary" role="status">
+        <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
         <p class="text-muted small mt-3">

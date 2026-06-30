@@ -67,13 +67,13 @@ include 'config/database.php';
 
 <div class="hero-section text-center py-5">
     <div class="logo-container mb-4">
-        <img src="assets/img/LOGO SI-BAGO.png" 
+        <img src="assets/img/logo si bago.png" 
              alt="Logo SI-BAGO" 
              class="img-fluid" 
-             style="max-width: 350px; 
-                    max-height: 350px;  
-                    padding: 20px; 
-                    border-radius: 20px;
+             style="max-width: 550px; 
+                    max-height: 550px;  
+                    padding: 5px; 
+                    border-radius: 5px;
                     filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.08));">
     </div>
     

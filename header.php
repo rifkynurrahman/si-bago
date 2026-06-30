@@ -95,9 +95,9 @@ body {
 <nav class="navbar navbar-expand-lg navbar-dark navbar-sticky" style="background: #A2C2E8 !important; padding: 1rem 0;">
     <div class="container">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="<?php echo $basePath; ?>index.php" style="font-size: 1.3rem; letter-spacing: 1px;">
-            <img src="<?php echo $basePath; ?>assets/img/LOGO SI-BAGO.png" 
+            <img src="<?php echo $basePath; ?>assets/img/logo si bago.png" 
                  alt="SI-BAGO" 
-                 style="height: 80px; 
+                 style="height: 100px; 
                         width: auto; 
                         margin-right: 10px; 
                         padding: 5px;
