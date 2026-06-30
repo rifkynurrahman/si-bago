@@ -1,0 +1,367 @@
+/* ========================================
+   SI-BAGO - Smart Innovative Boardgame 
+   Geometri berbasis Etnomatematika Jawa Tengah
+   ======================================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* ========== ROOT VARIABLES ========== */
+:root {
+    --primary-color: #A2C2E8;     /* Mengubah warna utama menjadi Biru Soft */
+    --secondary-color: #92B4DC;   /* Kombinasi gradasi Biru Soft yang serasi */
+    --accent-color: #7AA0CD;      /* Warna aksen tombol/detail */
+    --accent-light: #B9D3F3;     
+    --text-dark: #2C3E50;         /* Mengubah teks jadi abu-abu gelap agar kontras dan mudah dibaca */
+    --text-light: #5A738E;
+    --bg-light: #F4F7FA;
+    --bg-gradient: linear-gradient(135deg, #F4F7FA 0%, #DCE6F1 100%);
+    --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 15px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 25px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
+
+
+/* ========== GLOBAL STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-gradient);
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-top: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Smooth scroll offset for sticky navbar */
+:target {
+    scroll-margin-top: 80px;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important;
+    box-shadow: var(--shadow-sm);
+    padding: 1rem 0;
+    transition: var(--transition);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    background: rgba(255,255,255,0.2);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* ========== HERO SECTION ========== */
+.hero-section {
+    position: relative;
+    padding:  5rem 2rem;
+    margin-top: -50px;
+    background: linear-gradient(135deg, rgba(139,69,19,0.1) 0%, rgba(210,105,30,0.1) 100%);
+    margin-bottom: 3rem;
+    overflow: hidden;
+}
+
+.hero-section h1 {
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section .lead {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 1.3rem;
+}
+
+/* ========== CARDS ========== */
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* ========== BUTTONS ========== */
+.btn-primary {
+    background: linear-gradient(45deg, var(--accent-color), var(--accent-light));
+    border: none;
+    border-radius: 25px;
+    padding: 0.7rem 2rem;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(34, 0, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, var(--accent-light), var(--accent-color));
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 174, 255, 0.5);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 25px;
+    padding: 0.7rem 2rem;
+    color: white;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    transform: translateY(-3px);
+}
+
+/* ========== MATH ICONS ========== */
+.math-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) !important;
+    margin-top: 5rem;
+    padding: 2rem 0;
+    color: white;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+
+footer p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ========== TABLE STYLES ========== */
+.table {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.table thead {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(139, 69, 19, 0.05);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 107, 53, 0.1);
+    transform: scale(1.01);
+    transition: var(--transition);
+}
+
+/* ========== GALLERY STYLES ========== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    transform: translateY(0);
+}
+
+/* ========== FORM STYLES ========== */
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    padding: 0.75rem 1rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 85, 255, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* ========== CONTENT SECTION ========== */
+.content {
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.content h2, .content h3, .content h4 {
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.content p {
+    margin-bottom: 1rem;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 1.1rem;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 0.2rem 0;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        padding: 3rem 1rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== MODAL STYLES ========== */
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 20px 20px 0 0;
+    border: none;
+}
+
+.modal-footer {
+    border: none;
+    padding: 1.5rem;
+}
+.navbar-sticky {
+    transition: all 0.3s ease, padding 0.3s ease;
+}

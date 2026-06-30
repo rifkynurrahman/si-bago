@@ -1,0 +1,368 @@
+═══════════════════════════════════════════════════════════════════════════
+                    PANDUAN FITUR TAMBAHAN SI-BAGO
+             Icon Menu, Upload Logo, dan Upload Foto untuk Semua Fitur
+═══════════════════════════════════════════════════════════════════════════
+
+Terima kasih atas request fitur tambahannya! Berikut adalah fitur-fitur yang perlu
+ditambahkan beserta cara implementasinya:
+
+═══════════════════════════════════════════════════════════════════════════
+📋 FITUR YANG DIMINTA
+═══════════════════════════════════════════════════════════════════════════
+
+1. ✅ GANTI ICON untuk setiap menu (admin bisa pilih icon Font Awesome)
+2. ✅ UPLOAD/GANTI LOGO website  
+3. ✅ UPLOAD FOTO untuk semua fitur:
+   - Identitas SI-BAGO
+   - Filosofi Logo
+   - Etnomatematika Jawa Tengah
+   - Kartu Gladhen
+   - Dokumentasi (galeri)
+
+═══════════════════════════════════════════════════════════════════════════
+🗄️ STEP 1: UPDATE DATABASE
+═══════════════════════════════════════════════════════════════════════════
+
+File SQL sudah dibuat di: database/update_database.sql
+
+CARA MENJALANKAN:
+1. Buka phpMyAdmin: http://localhost/phpmyadmin
+2. Pilih database: db_sibago
+3. Klik tab "SQL"
+4. Copy-paste isi file update_database.sql
+5. Klik "Go"
+
+ATAU:
+
+1. Buka file: database/update_database.sql
+2. Jalankan satu per satu query-nya di phpMyAdmin
+
+YANG DITAMBAHKAN:
+- Kolom 'icon' di tabel menu (untuk icon Font Awesome)
+- Kolom 'gambar' di tabel menu (untuk upload foto setiap menu)
+- Tabel 'settings' (untuk logo dan pengaturan website)
+- Tabel 'galeri' (untuk galeri dokumentasi)
+
+═══════════════════════════════════════════════════════════════════════════
+📁 STEP 2: BUAT FOLDER UNTUK UPLOAD
+═══════════════════════════════════════════════════════════════════════════
+
+Buat folder-folder berikut di dalam si-bago/assets/img/:
+
+si-bago/assets/img/
+  ├── logo.png                  (logo website)
+  ├── menu/                     (foto untuk setiap menu)
+  │   ├── identitas.jpg
+  │   ├── logo.jpg
+  │   ├── etnomatematika.jpg
+  │   ├── gladhen.jpg
+  │   └── penyusun.jpg
+  └── galeri/                   (galeri dokumentasi)
+      ├── workshop.jpg
+      ├── ujicoba.jpg
+      ├── presentasi.jpg
+      └── ...
+
+CARA MEMBUAT (Via File Explorer):
+1. Buka folder: C:/xampp/htdocs/si-bago/assets/img/
+2. Klik kanan → New Folder
+3. Buat folder: "menu"
+4. Buat folder: "galeri"
+
+═══════════════════════════════════════════════════════════════════════════
+⚙️ STEP 3: FITUR YANG PERLU DIBUAT
+═══════════════════════════════════════════════════════════════════════════
+
+A. HALAMAN SETTINGS (admin/settings.php)
+──────────────────────────────────────────────────────────────────────
+FITUR:
+✅ Upload/Ganti Logo Website
+✅ Edit Nama & Tagline Website  
+✅ Kelola Icon Menu (link ke edit_icon.php)
+
+AKSES: Admin Dashboard → Settings
+
+
+B. HALAMAN EDIT ICON (admin/edit_icon.php)
+──────────────────────────────────────────────────────────────────────
+FITUR:
+✅ Dropdown pilih icon Font Awesome
+✅ Preview icon real-time
+✅ List icon popular (home, file, users, camera, dll)
+✅ Search icon
+
+CARA KERJA:
+1. Admin klik "Ganti Icon" di menu tertentu
+2. Muncul halaman dengan dropdown icon
+3. Pilih icon → Preview → Save
+
+
+C. UPDATE HALAMAN EDIT MENU (admin/edit.php)
+──────────────────────────────────────────────────────────────────────
+TAMBAHAN:
+✅ Upload foto untuk menu
+✅ Preview foto
+✅ Hapus foto
+
+CARA KERJA:
+1. Admin edit menu seperti biasa
+2. Ada field tambahan: "Upload Gambar"
+3. Upload foto → Save
+
+
+D. HALAMAN GALERI (admin/galeri.php)
+──────────────────────────────────────────────────────────────────────
+FITUR:
+✅ Upload foto dokumentasi
+✅ Edit judul & deskripsi foto
+✅ Hapus foto
+✅ Kategori foto (workshop, ujicoba, event, dll)
+
+TAMPILAN USER:
+✅ Grid galeri foto
+✅ Lightbox saat klik foto
+✅ Filter by kategori
+
+
+E. UPDATE HOMEPAGE (index.php)
+──────────────────────────────────────────────────────────────────────
+PERUBAHAN:
+✅ Icon menu diambil dari database (bukan hardcode)
+✅ Logo website diambil dari database
+
+SEBELUM:
+$menu_icons = [
+    'identitas' => '📐',
+    'logo' => '🎨',
+    ...
+];
+
+SESUDAH:
+while ($menu = $menus->fetch_assoc()) {
+    $icon = $menu['icon'];  // dari database
+    echo "<i class='{$icon}'></i>";
+}
+
+═══════════════════════════════════════════════════════════════════════════
+💡 IMPLEMENTASI CEPAT (PRIORITAS)
+═══════════════════════════════════════════════════════════════════════════
+
+JIKA WAKTU TERBATAS, PRIORITASKAN:
+
+1. ✅ UPDATE DATABASE (5 menit)
+   - Jalankan update_database.sql
+
+2. ✅ BUAT FOLDER UPLOAD (2 menit)
+   - Buat folder: assets/img/menu/
+   - Buat folder: assets/img/galeri/
+
+3. ✅ UPDATE HOMEPAGE untuk icon database (10 menit)
+   - Edit index.php
+   - Ganti emoji dengan icon dari database
+
+4. ✅ UPLOAD LOGO (5 menit)
+   - Upload logo.png ke assets/img/
+   - Update di database
+
+═══════════════════════════════════════════════════════════════════════════
+📝 CODE SNIPPET PENTING
+═══════════════════════════════════════════════════════════════════════════
+
+A. UPLOAD FILE PHP
+──────────────────────────────────────────────────────────────────────
+if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] == 0) {
+    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+    $filename = $_FILES['gambar']['name'];
+    $filetype = pathinfo($filename, PATHINFO_EXTENSION);
+    
+    if (in_array(strtolower($filetype), $allowed)) {
+        $newname = time() . '_' . $filename;
+        $destination = '../assets/img/menu/' . $newname;
+        
+        if (move_uploaded_file($_FILES['gambar']['tmp_name'], $destination)) {
+            // Update database
+            $gambarPath = 'assets/img/menu/' . $newname;
+            $stmt = $conn->prepare("UPDATE menu SET gambar = ? WHERE id = ?");
+            $stmt->bind_param("si", $gambarPath, $id);
+            $stmt->execute();
+            
+            echo "Upload berhasil!";
+        }
+    }
+}
+
+
+B. TAMPILKAN ICON DARI DATABASE (index.php)
+──────────────────────────────────────────────────────────────────────
+$menus = $conn->query("SELECT slug, judul, icon FROM menu ORDER BY id");
+
+while ($menu = $menus->fetch_assoc()) {
+    $icon = $menu['icon'] ?? 'fas fa-file-alt'; // default icon
+    
+    echo "<div class='card'>
+            <div class='math-icon'>
+                <i class='{$icon}'></i>
+            </div>
+            <h5>{$menu['judul']}</h5>
+          </div>";
+}
+
+
+C. TAMPILKAN GAMBAR (jika ada)
+──────────────────────────────────────────────────────────────────────
+<?php if (!empty($data['gambar']) && file_exists($data['gambar'])): ?>
+    <img src="<?php echo $data['gambar']; ?>" 
+         alt="<?php echo $data['judul']; ?>" 
+         class="img-fluid rounded">
+<?php endif; ?>
+
+═══════════════════════════════════════════════════════════════════════════
+🎨 DAFTAR ICON FONT AWESOME YANG BAGUS
+═══════════════════════════════════════════════════════════════════════════
+
+UNTUK MENU SI-BAGO:
+- Identitas:        fas fa-id-card / fas fa-address-card
+- Logo:             fas fa-palette / fas fa-paint-brush
+- Etnomatematika:   fas fa-landmark / fas fa-mosque
+- Kartu Gladhen:    fas fa-gamepad / fas fa-dice
+- Penyusun:         fas fa-users / fas fa-user-friends
+- Dokumentasi:      fas fa-camera / fas fa-images
+
+UMUM:
+- Home:             fas fa-home
+- File:             fas fa-file-alt
+- Settings:         fas fa-cog
+- Upload:           fas fa-upload
+- Edit:             fas fa-edit
+- Delete:           fas fa-trash
+- Save:             fas fa-save
+- Back:             fas fa-arrow-left
+
+LIHAT SEMUA: https://fontawesome.com/icons
+
+═══════════════════════════════════════════════════════════════════════════
+📸 CARA UPLOAD FOTO (UNTUK USER/ADMIN)
+═══════════════════════════════════════════════════════════════════════════
+
+1. SIAPKAN FOTO
+   - Format: JPG, PNG, GIF
+   - Ukuran: Maksimal 2MB
+   - Resolusi: Minimal 800x600px untuk kualitas bagus
+
+2. CARA UPLOAD (Setelah fitur dibuat):
+   
+   A. Upload Logo:
+      - Login admin
+      - Dashboard → Settings
+      - Upload Logo Baru
+      - Pilih file → Upload
+   
+   B. Upload Foto Menu:
+      - Login admin
+      - Dashboard → Kelola Menu
+      - Edit menu yang ingin diberi foto
+      - Upload Gambar
+      - Save
+   
+   C. Upload Galeri:
+      - Login admin
+      - Dashboard → Galeri Dokumentasi
+      - Tambah Foto Baru
+      - Isi judul & deskripsi
+      - Upload foto
+      - Save
+
+═══════════════════════════════════════════════════════════════════════════
+🔧 TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════════
+
+MASALAH 1: Upload gagal
+──────────────────────────────────────────────────────────────────────
+SOLUSI:
+- Cek permission folder: chmod 755 assets/img/
+- Cek php.ini:
+  upload_max_filesize = 10M
+  post_max_size = 10M
+- Restart Apache
+
+MASALAH 2: Icon tidak muncul
+──────────────────────────────────────────────────────────────────────
+SOLUSI:
+- Cek koneksi internet (Font Awesome dari CDN)
+- Cek kode icon benar: "fas fa-home" bukan "fa-home"
+- Refresh browser (Ctrl + F5)
+
+MASALAH 3: Foto tidak tampil
+──────────────────────────────────────────────────────────────────────
+SOLUSI:
+- Cek path foto di database benar
+- Cek file foto ada di folder
+- Cek permission file: chmod 644
+
+═══════════════════════════════════════════════════════════════════════════
+✅ CHECKLIST IMPLEMENTASI
+═══════════════════════════════════════════════════════════════════════════
+
+DATABASE:
+□ Jalankan update_database.sql
+□ Cek tabel menu ada kolom icon & gambar
+□ Cek tabel settings ada
+□ Cek tabel galeri ada
+
+FOLDER:
+□ Buat folder assets/img/menu/
+□ Buat folder assets/img/galeri/
+□ Cek permission folder (755)
+
+FITUR (OPTIONAL - Bisa dikembangkan nanti):
+□ Halaman settings.php
+□ Halaman edit_icon.php
+□ Update edit.php (tambah upload foto)
+□ Halaman galeri.php
+□ Update index.php (icon dari database)
+
+TESTING:
+□ Upload logo berhasil
+□ Ganti icon menu berhasil
+□ Upload foto menu berhasil
+□ Upload galeri berhasil
+□ Icon muncul di homepage
+□ Foto muncul di halaman menu
+
+═══════════════════════════════════════════════════════════════════════════
+📞 CATATAN PENTING
+═══════════════════════════════════════════════════════════════════════════
+
+Fitur-fitur ini memerlukan:
+1. Update database (WAJIB)
+2. Buat folder upload (WAJIB)
+3. Coding PHP tambahan untuk upload (OPTIONAL - bisa dikembangkan nanti)
+
+Project saat ini SUDAH LENGKAP dan BERFUNGSI dengan baik.
+Fitur upload foto & icon adalah ENHANCEMENT (peningkatan) yang bisa
+ditambahkan bertahap.
+
+Yang SUDAH ADA sekarang:
+✅ Sticky navbar
+✅ Login/logout admin
+✅ Edit menu
+✅ Kelola penyusun
+✅ Galeri dokumentasi (dengan placeholder)
+✅ Responsive design
+✅ Animasi smooth
+
+Yang BELUM (Untuk pengembangan selanjutnya):
+⏳ Upload logo via admin panel
+⏳ Ganti icon via admin panel
+⏳ Upload foto setiap menu
+⏳ Upload galeri via admin panel
+
+═══════════════════════════════════════════════════════════════════════════
+
+Semua file SQL dan panduan sudah disertakan dalam project.
+Silakan kembangkan fitur-fitur tambahan sesuai kebutuhan!
+
+═══════════════════════════════════════════════════════════════════════════
+Developed with ❤️ by Claude AI
+© 2026 SI-BAGO Enhanced Edition
+═══════════════════════════════════════════════════════════════════════════

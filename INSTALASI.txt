@@ -1,0 +1,223 @@
+═══════════════════════════════════════════════════════════════════════
+                    PANDUAN INSTALASI SI-BAGO
+   Smart Innovative Boardgame Geometri berbasis Etnomatematika Jawa Tengah
+═══════════════════════════════════════════════════════════════════════
+
+📋 PERSIAPAN
+═══════════════════════════════════════════════════════════════════════
+Sebelum instalasi, pastikan Anda sudah memiliki:
+
+✓ XAMPP / WAMP / MAMP / LAMP (untuk menjalankan PHP dan MySQL)
+✓ Web browser (Chrome, Firefox, Edge, dll)
+✓ Text editor (VS Code, Sublime, Notepad++, dll) - opsional
+
+═══════════════════════════════════════════════════════════════════════
+
+🚀 LANGKAH INSTALASI
+═══════════════════════════════════════════════════════════════════════
+
+LANGKAH 1: PERSIAPAN FOLDER
+───────────────────────────────────────────────────────────────────────
+1. Extract file si-bago.zip
+2. Copy folder "si-bago" ke dalam folder htdocs XAMPP
+   Lokasi folder htdocs:
+   - Windows: C:/xampp/htdocs/
+   - Mac: /Applications/XAMPP/htdocs/
+   - Linux: /opt/lampp/htdocs/
+
+
+LANGKAH 2: MEMBUAT DATABASE
+───────────────────────────────────────────────────────────────────────
+1. Jalankan XAMPP Control Panel
+2. Start Apache dan MySQL
+3. Buka browser, ketik: http://localhost/phpmyadmin
+4. Klik "New" untuk membuat database baru
+5. Nama database: db_sibago
+6. Klik "Create"
+
+
+LANGKAH 3: IMPORT DATABASE
+───────────────────────────────────────────────────────────────────────
+Pilih salah satu cara:
+
+CARA A - Via phpMyAdmin (Mudah):
+1. Pilih database "db_sibago" di sidebar kiri
+2. Klik tab "Import"
+3. Klik "Choose File"
+4. Pilih file: si-bago/database/si-bago.sql
+5. Klik "Go" di bagian bawah
+6. Tunggu sampai muncul pesan sukses
+
+CARA B - Via setup_database.php (Otomatis):
+1. Buka browser
+2. Ketik: http://localhost/si-bago/setup_database.php
+3. Klik tombol "Setup Database"
+4. Database akan otomatis ter-setup
+
+
+LANGKAH 4: KONFIGURASI DATABASE (Jika diperlukan)
+───────────────────────────────────────────────────────────────────────
+Jika username/password MySQL Anda bukan default:
+
+1. Buka file: si-bago/config/database.php
+2. Edit bagian berikut sesuai dengan setting MySQL Anda:
+
+   $host = "localhost";      // Hostname (biasanya localhost)
+   $user = "root";           // Username MySQL
+   $pass = "";               // Password MySQL (kosongkan jika tidak ada)
+   $db = "db_sibago";        // Nama database
+
+3. Save file
+
+
+LANGKAH 5: AKSES WEBSITE
+───────────────────────────────────────────────────────────────────────
+1. Buka browser
+2. Ketik salah satu URL berikut:
+
+   HALAMAN UTAMA (User):
+   http://localhost/si-bago/
+   atau
+   http://127.0.0.1/si-bago/
+
+   HALAMAN ADMIN:
+   http://localhost/si-bago/admin/login.php
+
+═══════════════════════════════════════════════════════════════════════
+
+🔐 LOGIN ADMIN
+═══════════════════════════════════════════════════════════════════════
+Username: admin
+Password: admin123
+
+⚠️ PENTING: Segera ganti password setelah login pertama!
+
+═══════════════════════════════════════════════════════════════════════
+
+✅ VERIFIKASI INSTALASI
+═══════════════════════════════════════════════════════════════════════
+Cek apakah instalasi berhasil:
+
+□ Homepage muncul dengan 6 menu card
+□ Bisa klik menu dan melihat kontennya
+□ Navbar di atas website berfungsi
+□ Bisa login ke admin panel
+□ Admin dashboard menampilkan data
+
+═══════════════════════════════════════════════════════════════════════
+
+🔧 TROUBLESHOOTING (Jika Ada Masalah)
+═══════════════════════════════════════════════════════════════════════
+
+MASALAH 1: "Connection failed: Access denied"
+─────────────────────────────────────────────
+SOLUSI:
+- Pastikan MySQL di XAMPP sudah running (hijau)
+- Periksa username/password di config/database.php
+- Pastikan database db_sibago sudah dibuat
+
+
+MASALAH 2: "Warning: include(config/database.php)"
+─────────────────────────────────────────────
+SOLUSI:
+- Pastikan struktur folder benar
+- File config/database.php harus ada
+- Periksa permission folder (Windows biasanya OK)
+
+
+MASALAH 3: Halaman blank/putih
+─────────────────────────────────────────────
+SOLUSI:
+- Cek error di file error_log atau php_error.log
+- Aktifkan error reporting: 
+  Tambahkan ini di awal file index.php:
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+
+
+MASALAH 4: Menu tidak muncul di homepage
+─────────────────────────────────────────────
+SOLUSI:
+- Pastikan database sudah di-import
+- Cek tabel "menu" di phpMyAdmin, harus ada 6 data
+- Jalankan ulang setup_database.php
+
+
+MASALAH 5: CSS tidak load / tampilan berantakan
+─────────────────────────────────────────────
+SOLUSI:
+- Tekan Ctrl + F5 untuk hard refresh
+- Pastikan folder assets/css/ ada dan berisi style.css
+- Cek path CSS di file head.php
+
+
+MASALAH 6: Tidak bisa upload foto
+─────────────────────────────────────────────
+SOLUSI (Windows):
+- Tidak perlu setting khusus, biasanya langsung bisa
+
+SOLUSI (Linux/Mac):
+- Buka terminal
+- Jalankan: chmod -R 755 si-bago/assets/img/
+- Atau: chmod -R 777 si-bago/assets/img/penyusun/
+
+═══════════════════════════════════════════════════════════════════════
+
+📁 STRUKTUR FOLDER PENTING
+═══════════════════════════════════════════════════════════════════════
+si-bago/
+  ├── admin/              → Panel admin
+  ├── assets/             → File CSS, JS, Gambar
+  │   ├── css/           → File styling
+  │   ├── js/            → File JavaScript
+  │   └── img/           → Folder gambar
+  ├── config/            → Konfigurasi database
+  ├── database/          → File SQL untuk import
+  ├── menu/              → Halaman-halaman menu
+  ├── index.php          → Halaman utama
+  └── README.md          → Dokumentasi lengkap
+
+═══════════════════════════════════════════════════════════════════════
+
+📚 PETUNJUK PENGGUNAAN
+═══════════════════════════════════════════════════════════════════════
+
+UNTUK ADMINISTRATOR:
+1. Login ke admin panel: /admin/login.php
+2. Dashboard: Lihat statistik website
+3. Kelola Menu: Edit konten setiap halaman
+4. Kelola Penyusun: Tambah/edit data tim penyusun
+5. Upload Foto: Upload dokumentasi kegiatan
+
+UNTUK USER/PENGUNJUNG:
+1. Buka homepage
+2. Klik salah satu dari 6 menu card
+3. Baca informasi lengkap
+4. Klik "Pelajari Lebih Lanjut" untuk detail
+
+═══════════════════════════════════════════════════════════════════════
+
+📞 BUTUH BANTUAN?
+═══════════════════════════════════════════════════════════════════════
+
+Jika masih ada masalah, hubungi:
+
+Email: info@sibago.com
+Phone: +62 123 4567 8900
+Website: www.sibago.com
+
+Atau buka file README.md untuk dokumentasi lebih lengkap!
+
+═══════════════════════════════════════════════════════════════════════
+
+✨ SELAMAT MENGGUNAKAN SI-BAGO! ✨
+
+Terima kasih telah menggunakan SI-BAGO sebagai media pembelajaran
+matematika berbasis etnomatematika Jawa Tengah.
+
+Mari bersama-sama mengembangkan pendidikan yang lebih inovatif dan
+bermakna!
+
+═══════════════════════════════════════════════════════════════════════
+              © 2026 SI-BAGO. Developed with ❤️ by Tim SI-BAGO
+═══════════════════════════════════════════════════════════════════════

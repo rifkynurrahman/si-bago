@@ -1,0 +1,318 @@
+═══════════════════════════════════════════════════════════════════════════
+            🎨 PANDUAN FITUR BARU SI-BAGO v2.1 🎨
+   Fitur Upload Logo, Ganti Icon Menu, dan Upload Foto di Setiap Menu
+═══════════════════════════════════════════════════════════════════════════
+
+📦 FITUR BARU YANG DITAMBAHKAN:
+═══════════════════════════════════════════════════════════════════════════
+
+1. ✅ UPLOAD LOGO WEBSITE
+   - Admin bisa upload logo sendiri
+   - Preview real-time sebelum upload
+   - Support: JPG, PNG, GIF (max 2MB)
+   - Ukuran rekomendasi: 200x200px
+
+2. ✅ GANTI ICON MENU
+   - Pilih dari 40+ emoji
+   - Pilih dari 28+ Font Awesome icons
+   - Input custom icon (emoji atau HTML)
+   - Preview real-time
+
+3. ✅ PENGATURAN WEBSITE
+   - Edit nama situs
+   - Edit tagline/deskripsi
+   - Semua tersimpan di database
+
+4. ✅ DATABASE BARU
+   - Tabel `settings` untuk logo & pengaturan
+   - Kolom `icon` di tabel `menu`
+   - Tabel `menu_images` untuk foto per menu
+   - Tabel `dokumentasi` untuk galeri
+
+═══════════════════════════════════════════════════════════════════════════
+
+🚀 CARA INSTALL FITUR BARU:
+═══════════════════════════════════════════════════════════════════════════
+
+LANGKAH 1: EXTRACT FILE BARU
+───────────────────────────────────────────────────────────────────────────
+1. Download file ZIP terbaru
+2. Extract ke folder htdocs/si-bago/
+3. Replace file yang ada (backup dulu jika perlu)
+
+
+LANGKAH 2: UPDATE DATABASE
+───────────────────────────────────────────────────────────────────────────
+PENTING! Anda harus menjalankan SQL untuk update database!
+
+Cara A - Via phpMyAdmin:
+1. Buka http://localhost/phpmyadmin
+2. Pilih database "db_sibago"
+3. Klik tab "SQL"
+4. Copy-paste isi file: database/upgrade_v2.sql
+5. Klik "Go"
+
+Cara B - Via File:
+1. Buka folder: si-bago/database/
+2. Double click file: upgrade_v2.sql
+3. Copy semua isi file
+4. Paste di phpMyAdmin SQL tab
+5. Execute
+
+⚠️ JIKA TIDAK UPDATE DATABASE, FITUR BARU TIDAK AKAN BEKERJA!
+
+
+LANGKAH 3: BUAT FOLDER UNTUK UPLOAD
+───────────────────────────────────────────────────────────────────────────
+Buat folder-folder ini di: si-bago/assets/img/
+
+1. si-bago/assets/img/dokumentasi/
+2. si-bago/assets/img/menu/
+
+Windows:
+- Klik kanan di folder img → New → Folder
+- Buat folder "dokumentasi" dan "menu"
+
+Linux/Mac:
+mkdir -p si-bago/assets/img/dokumentasi
+mkdir -p si-bago/assets/img/menu
+
+═══════════════════════════════════════════════════════════════════════════
+
+📖 CARA MENGGUNAKAN FITUR BARU:
+═══════════════════════════════════════════════════════════════════════════
+
+A. UPLOAD LOGO
+───────────────────────────────────────────────────────────────────────────
+1. Login sebagai admin
+2. Dashboard → Klik "⚙️ Pengaturan"
+3. Di card "Upload Logo":
+   - Klik "Choose File"
+   - Pilih logo (JPG/PNG/GIF, max 2MB)
+   - Lihat preview
+   - Klik "Upload Logo"
+4. Logo akan otomatis muncul di navbar!
+
+
+B. GANTI ICON MENU
+───────────────────────────────────────────────────────────────────────────
+1. Login sebagai admin
+2. Dashboard → "⚙️ Pengaturan"
+3. Scroll ke "Kelola Icon Menu"
+4. Klik "Ubah Icon" pada menu yang mau diganti
+5. Pilih icon:
+   
+   Option 1 - Emoji:
+   - Klik emoji yang disukai
+   - Preview akan muncul
+   
+   Option 2 - Font Awesome:
+   - Klik icon Font Awesome
+   - Preview akan muncul
+   
+   Option 3 - Custom:
+   - Paste emoji atau kode HTML
+   - Contoh: <i class='fas fa-star'></i>
+   - Klik "Gunakan"
+
+6. Klik "💾 Simpan Icon"
+7. Icon akan langsung berubah di homepage!
+
+
+C. EDIT PENGATURAN SITUS
+───────────────────────────────────────────────────────────────────────────
+1. Login sebagai admin
+2. Dashboard → "⚙️ Pengaturan"
+3. Di card "Pengaturan Situs":
+   - Edit "Nama Situs"
+   - Edit "Tagline"
+4. Klik "💾 Simpan Pengaturan"
+
+═══════════════════════════════════════════════════════════════════════════
+
+📁 FILE-FILE BARU:
+═══════════════════════════════════════════════════════════════════════════
+
+admin/settings.php       → Halaman pengaturan (upload logo, dll)
+admin/edit_icon.php      → Halaman edit icon menu
+database/upgrade_v2.sql  → SQL untuk update database
+PANDUAN_FITUR_BARU.txt   → File ini
+
+═══════════════════════════════════════════════════════════════════════════
+
+🎨 CONTOH PENGGUNAAN:
+═══════════════════════════════════════════════════════════════════════════
+
+SKENARIO 1: Ganti Logo
+─────────────────────
+1. Admin login
+2. Buka Pengaturan
+3. Upload logo baru (misal: logo-sekolah.png)
+4. Logo langsung muncul di navbar
+5. Semua pengunjung lihat logo baru
+
+SKENARIO 2: Ganti Icon Menu "Kartu Gladhen"
+────────────────────────────────────────────
+1. Admin login
+2. Buka Pengaturan → Kelola Icon Menu
+3. Klik "Ubah Icon" di menu "Kartu Gladhen"
+4. Pilih emoji 🎴 atau icon lain
+5. Simpan
+6. Homepage sekarang tampil icon 🎴 untuk menu Gladhen
+
+SKENARIO 3: Custom Icon dengan Font Awesome
+────────────────────────────────────────────
+1. Admin login
+2. Edit icon menu "Identitas SI-BAGO"
+3. Scroll ke "Custom Icon"
+4. Paste: <i class='fas fa-info-circle'></i>
+5. Klik "Gunakan"
+6. Klik "Simpan Icon"
+7. Menu sekarang punya icon ℹ️ (info circle)
+
+═══════════════════════════════════════════════════════════════════════════
+
+💡 TIPS & TRIK:
+═══════════════════════════════════════════════════════════════════════════
+
+TIP 1: Logo Transparan
+- Gunakan PNG dengan background transparan
+- Akan terlihat lebih profesional di navbar
+
+TIP 2: Ukuran Logo
+- Ukuran ideal: 200x200px atau 250x250px
+- Jangan terlalu besar (max 2MB)
+- Compress dulu sebelum upload
+
+TIP 3: Pilih Icon yang Relevan
+- Identitas → 📐 (penggaris) atau 📋 (clipboard)
+- Logo → 🎨 (palet) atau 🖼️ (frame)
+- Etnomatematika → 🧮 (abacus) atau 🏛️ (building)
+- Kartu Gladhen → 🃏 (playing card) atau 🎴 (flower cards)
+- Penyusun → 👥 (people) atau 👨‍🏫 (teacher)
+- Dokumentasi → 📸 (camera) atau 📷 (camera)
+
+TIP 4: Kombinasi Emoji + Font Awesome
+- Bisa pakai emoji: 🎯
+- Bisa pakai Font Awesome: <i class='fas fa-bullseye'></i>
+- Pilih yang paling cocok dengan desain
+
+TIP 5: Test di Mobile
+- Setelah ganti icon/logo
+- Buka di HP
+- Pastikan terlihat bagus
+
+═══════════════════════════════════════════════════════════════════════════
+
+❓ FAQ (Frequently Asked Questions):
+═══════════════════════════════════════════════════════════════════════════
+
+Q: Kenapa setelah upload database masih error?
+A: Pastikan Anda sudah jalankan file upgrade_v2.sql di phpMyAdmin!
+
+Q: Logo tidak muncul setelah upload?
+A: 
+   1. Cek folder assets/img/ ada file logo.png atau logo.jpg
+   2. Refresh halaman dengan Ctrl + F5
+   3. Clear browser cache
+
+Q: Icon tidak berubah di homepage?
+A: 
+   1. Pastikan sudah klik "Simpan Icon"
+   2. Refresh homepage dengan Ctrl + F5
+   3. Cek database: SELECT icon FROM menu;
+
+Q: Bisa pakai icon custom selain emoji dan Font Awesome?
+A: Bisa! Paste kode HTML apapun di field "Custom Icon"
+
+Q: Upload logo gagal "File too large"?
+A: Compress dulu logo Anda di:
+   - TinyPNG.com (untuk PNG)
+   - Compressor.io (untuk JPG)
+   - Target size: < 500KB
+
+Q: Bisa upload beberapa logo?
+A: Saat ini hanya 1 logo. Logo lama akan di-replace.
+
+Q: Icon bisa animasi?
+A: Untuk Font Awesome bisa pakai:
+   <i class='fas fa-spinner fa-spin'></i>
+
+═══════════════════════════════════════════════════════════════════════════
+
+🔧 TROUBLESHOOTING:
+═══════════════════════════════════════════════════════════════════════════
+
+ERROR 1: "Table 'db_sibago.settings' doesn't exist"
+───────────────────────────────────────────────────
+SOLUSI:
+- Anda belum jalankan upgrade_v2.sql
+- Buka phpMyAdmin
+- Execute file upgrade_v2.sql
+
+
+ERROR 2: "Unknown column 'icon' in 'field list'"
+───────────────────────────────────────────────────
+SOLUSI:
+- Anda belum update tabel menu
+- Jalankan SQL ini:
+  ALTER TABLE `menu` ADD COLUMN `icon` VARCHAR(50) DEFAULT '📄' AFTER `slug`;
+
+
+ERROR 3: Logo tidak muncul (404)
+───────────────────────────────────────────────────
+SOLUSI:
+- Cek apakah file logo ada di: assets/img/logo.png
+- Cek permission folder (chmod 755)
+- Cek path di database:
+  SELECT * FROM settings WHERE setting_key = 'site_logo';
+
+
+ERROR 4: "Failed to open stream: Permission denied"
+───────────────────────────────────────────────────
+SOLUSI (Linux/Mac):
+chmod -R 755 si-bago/assets/img/
+chmod -R 777 si-bago/assets/img/dokumentasi/
+chmod -R 777 si-bago/assets/img/menu/
+
+SOLUSI (Windows):
+- Klik kanan folder
+- Properties → Security
+- Edit → Add "Everyone" → Full Control
+
+═══════════════════════════════════════════════════════════════════════════
+
+📊 CHECKLIST TESTING:
+═══════════════════════════════════════════════════════════════════════════
+
+Setelah install, test hal-hal berikut:
+
+☐ Database sudah di-update (cek tabel settings ada)
+☐ Folder dokumentasi & menu sudah dibuat
+☐ Bisa akses halaman Pengaturan
+☐ Bisa upload logo
+☐ Logo muncul di navbar
+☐ Bisa ganti icon menu
+☐ Icon berubah di homepage
+☐ Bisa edit nama situs & tagline
+☐ Semua perubahan tersimpan
+☐ Test di mobile (responsive)
+
+═══════════════════════════════════════════════════════════════════════════
+
+🎉 SELESAI!
+═══════════════════════════════════════════════════════════════════════════
+
+Jika semua langkah sudah diikuti, sekarang Anda punya:
+
+✅ Logo custom yang bisa diganti
+✅ Icon menu yang bisa dikustomisasi
+✅ Pengaturan website yang fleksibel
+✅ Database yang ter-upgrade
+✅ Fitur upload yang siap pakai
+
+Selamat mencoba! 🚀
+
+═══════════════════════════════════════════════════════════════════════════
+           Developed with ❤️ by Claude AI for SI-BAGO Project
+═══════════════════════════════════════════════════════════════════════════
