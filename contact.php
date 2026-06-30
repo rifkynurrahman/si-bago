@@ -26,17 +26,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <style>
+/* Mengubah background hero menjadi Biru Soft */
 .contact-hero {
-    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
-    color: white;
+    background: linear-gradient(135deg, #A2C2E8 0%, #7AA0CD 100%);
+    color: #2C3E50; /* Mengubah teks menjadi gelap agar kontras dan mudah dibaca */
     padding: 4rem 0;
     text-align: center;
     margin-bottom: 3rem;
 }
 
 .contact-hero h1 {
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color: #2C3E50;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
     margin-bottom: 1rem;
 }
 
@@ -44,20 +45,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     background: white;
     border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     margin-bottom: 2rem;
     transition: all 0.3s ease;
 }
 
 .contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(122, 160, 205, 0.15);
 }
 
+/* Mengubah gradasi ikon bulat menjadi bertema biru */
 .contact-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(45deg, #FF6B35, #F7931E);
+    background: linear-gradient(45deg, #7AA0CD, #92B4DC);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -67,26 +69,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     margin: 0 auto 1rem;
 }
 
+/* Mengubah tema kartu informasi (alamat, dll) menjadi kebiruan */
 .info-card {
-    background: linear-gradient(135deg, rgba(139,69,19,0.05) 0%, rgba(210,105,30,0.05) 100%);
-    border-left: 5px solid #FF6B35;
+    background: linear-gradient(135deg, rgba(122,160,205,0.08) 0%, rgba(146,180,220,0.08) 100%);
+    border-left: 5px solid #7AA0CD;
     padding: 1.5rem;
     border-radius: 10px;
     margin-bottom: 1.5rem;
 }
 
 .info-card h5 {
-    color: #8B4513;
+    color: #2C3E50;
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
 .info-card p {
+    color: #4A5A6A;
     margin-bottom: 0.5rem;
 }
 
 .info-card i {
-    color: #FF6B35;
+    color: #7AA0CD;
     margin-right: 0.5rem;
     width: 20px;
 }
@@ -98,10 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     margin-top: 2rem;
 }
 
+/* Mengubah tombol sosmed menjadi Biru Soft */
 .social-link {
     width: 50px;
     height: 50px;
-    background: linear-gradient(45deg, #FF6B35, #F7931E);
+    background: linear-gradient(45deg, #7AA0CD, #92B4DC);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -114,15 +119,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 .social-link:hover {
     transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
+    box-shadow: 0 6px 20px rgba(122, 160, 205, 0.4);
     color: white;
+}
+
+/* Mempercantik fokus input form */
+.form-control:focus {
+    border-color: #7AA0CD;
+    box-shadow: 0 0 0 0.2rem rgba(122, 160, 205, 0.25);
+}
+
+/* Menyesuaikan warna tombol kirim pesan bawaan Bootstrap primary */
+.btn-primary {
+    background: linear-gradient(45deg, #7AA0CD, #92B4DC) !important;
+    border: none !important;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #92B4DC, #7AA0CD) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(122, 160, 205, 0.4);
 }
 </style>
 
 <div class="contact-hero">
     <div class="container">
-        <h1><i class="fas fa-envelope"></i> Hubungi Kami</h1>
-        <p class="lead">Punya pertanyaan? Kami siap membantu Anda!</p>
+        <h1 class="fw-bold"><i class="fas fa-envelope"></i> Hubungi Kami</h1>
+        <p class="lead" style="opacity: 0.9;">Punya pertanyaan? Kami siap membantu Anda!</p>
     </div>
 </div>
 
@@ -142,47 +166,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php endif; ?>
 
     <div class="row">
-        <!-- Contact Form -->
         <div class="col-lg-8 mb-4">
             <div class="contact-card">
-                <h3 class="mb-4" style="color: #8B4513;">
-                    <i class="fas fa-paper-plane"></i> Kirim Pesan
+                <h3 class="mb-4 fw-bold" style="color: #2C3E50;">
+                    <i class="fas fa-paper-plane" style="color: #7AA0CD;"></i> Kirim Pesan
                 </h3>
                 <form method="POST" action="" class="needs-validation" novalidate>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="nama" class="form-label">Nama Lengkap *</label>
+                            <label for="nama" class="form-label fw-bold" style="color: #4A5A6A;">Nama Lengkap *</label>
                             <input type="text" class="form-control" id="nama" name="nama" required
                                    placeholder="Masukkan nama Anda">
                             <div class="invalid-feedback">Nama harus diisi!</div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="email" class="form-label">Email *</label>
+                            <label for="email" class="form-label fw-bold" style="color: #4A5A6A;">Email *</label>
                             <input type="email" class="form-control" id="email" name="email" required
                                    placeholder="nama@email.com">
                             <div class="invalid-feedback">Email harus valid!</div>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="subjek" class="form-label">Subjek *</label>
+                        <label for="subjek" class="form-label fw-bold" style="color: #4A5A6A;">Subjek *</label>
                         <input type="text" class="form-control" id="subjek" name="subjek" required
                                placeholder="Subjek pesan">
                         <div class="invalid-feedback">Subjek harus diisi!</div>
                     </div>
                     <div class="mb-3">
-                        <label for="pesan" class="form-label">Pesan *</label>
+                        <label for="pesan" class="form-label fw-bold" style="color: #4A5A6A;">Pesan *</label>
                         <textarea class="form-control" id="pesan" name="pesan" rows="6" required
                                   placeholder="Tulis pesan Anda di sini..."></textarea>
                         <div class="invalid-feedback">Pesan harus diisi!</div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg">
+                    <button type="submit" class="btn btn-primary btn-lg fw-bold text-white px-4">
                         <i class="fas fa-paper-plane"></i> Kirim Pesan
                     </button>
                 </form>
             </div>
         </div>
 
-        <!-- Contact Info -->
         <div class="col-lg-4">
             <div class="info-card">
                 <h5><i class="fas fa-map-marker-alt"></i> Alamat</h5>
@@ -221,10 +243,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </p>
             </div>
 
-            <!-- Social Media -->
             <div class="text-center mt-4">
-                <h5 style="color: #8B4513; font-weight: 700;">
-                    <i class="fas fa-share-alt"></i> Ikuti Kami
+                <h5 style="color: #2C3E50; font-weight: 700;">
+                    <i class="fas fa-share-alt" style="color: #7AA0CD;"></i> Ikuti Kami
                 </h5>
                 <div class="social-links">
                     <a href="#" class="social-link" title="Facebook">
@@ -244,12 +265,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <!-- Google Maps -->
     <div class="row mt-5">
         <div class="col-12">
             <div class="contact-card">
-                <h3 class="mb-4 text-center" style="color: #8B4513;">
-                    <i class="fas fa-map-marked-alt"></i> Lokasi Kami
+                <h3 class="mb-4 text-center fw-bold" style="color: #2C3E50;">
+                    <i class="fas fa-map-marked-alt" style="color: #7AA0CD;"></i> Lokasi Kami
                 </h3>
                 <div class="ratio ratio-16x9">
                     <iframe 

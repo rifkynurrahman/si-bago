@@ -15,7 +15,26 @@ include 'config/database.php';
 <?php include 'header.php'; ?>
 
 <style>
-/* Logo animation */
+/* ─── FIX KODE PEMAKSA WARNA: MENYAMAKAN DENGAN BACKGROUND BAWAH ─── */
+.hero-section {
+    background: #F4F6F9 !important; /* Warna abu-abu terang bersih, menyatu dengan background bawah */
+    color: #2C3E50 !important;      /* Teks diubah menjadi gelap agar terlihat sangat tajam */
+    padding: 4rem 0;
+}
+
+/* Memastikan tulisan judul SI-BAGO terlihat jelas, tebal, dan tajam */
+.hero-section h1.display-4 {
+    color: #2C3E50 !important;
+    font-weight: 800;
+    text-shadow: none !important; /* Menghapus shadow putih agar tidak blur */
+}
+
+/* Memastikan teks deskripsi di bawah judul juga berwarna gelap dan bersih */
+.hero-section p.lead, .hero-section p {
+    color: #4A5A6A !important;
+}
+
+/* Logo animation (Bawaan asli kamu) */
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
@@ -42,12 +61,11 @@ include 'config/database.php';
 
 .logo-container:hover img {
     transform: scale(1.05);
-    filter: drop-shadow(0 8px 16px rgb(255, 255, 255)) !important;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1)) !important; /* Shadow halus gelap agar lebih menyatu */
 }
 </style>
 
 <div class="hero-section text-center py-5">
-    <!-- Logo SI-BAGO -->
     <div class="logo-container mb-4">
         <img src="assets/img/LOGO SI-BAGO.png" 
              alt="Logo SI-BAGO" 
@@ -55,7 +73,8 @@ include 'config/database.php';
              style="max-width: 350px; 
                     max-height: 350px;  
                     padding: 20px; 
-                    border-radius: 20px;">
+                    border-radius: 20px;
+                    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.08));">
     </div>
     
     <h1 class="display-4">SI-BAGO</h1>
@@ -65,7 +84,7 @@ include 'config/database.php';
     <p class="mt-3">Mari eksplorasi keindahan matematika melalui budaya dan tradisi Jawa</p>
 </div>
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <?php
         // Array icon untuk setiap menu
@@ -77,7 +96,6 @@ include 'config/database.php';
             'penyusun' => '👥',
             'dokumentasi' => '📸',
             'simulasi' => '🎲'   
-            
         ];
 
         // Array deskripsi untuk setiap menu
@@ -101,12 +119,12 @@ include 'config/database.php';
             $description = $menu_descriptions[$slug] ?? 'Pelajari lebih lanjut tentang ' . $menu['judul'];
 
             echo "<div class='col-md-4 mb-4'>
-                <div class='card h-100'>
-                    <div class='card-body text-center'>
-                        <div class='math-icon'>{$icon}</div>
-                        <h5 class='card-title'>{$menu['judul']}</h5>
-                        <p class='card-text'>{$description}</p>
-                        <a href='menu/view_menu.php?slug={$slug}' class='btn btn-primary'>Pelajari Lebih Lanjut</a>
+                <div class='card h-100 shadow-sm border-0' style='border-radius: 12px;'>
+                    <div class='card-body text-center p-4'>
+                        <div class='math-icon' style='font-size: 2.5rem; margin-bottom: 1rem;'>{$icon}</div>
+                        <h5 class='card-title fw-bold' style='color: #2C3E50;'>{$menu['judul']}</h5>
+                        <p class='card-text text-muted' style='font-size: 0.95rem;'>{$description}</p>
+                        <a href='menu/view_menu.php?slug={$slug}' class='btn btn-primary px-4' style='background: #7AA0CD; border: none; border-radius: 8px;'>Pelajari Lebih Lanjut</a>
                     </div>
                 </div>
             </div>";
