@@ -273,10 +273,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </h3>
                 <div class="ratio ratio-16x9">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0!2d110.8!3d-6.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDgnMDAuMCJTIDExMMKwNDgnMDAuMCJF!5e0!3m2!1sen!2sid!4v1234567890"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31695.045591246904!2d110.84123997549054!3d-6.784370066820324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70c52d5ac49401%3A0x98bc171685ba90ea!2sUniversitas%20Muria%20Kudus!5e0!3m2!1sid!2sid!4v1782893064901!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
                         style="border:0; border-radius: 15px;" 
                         allowfullscreen="" 
                         loading="lazy">
+                        
                     </iframe>
                 </div>
             </div>
