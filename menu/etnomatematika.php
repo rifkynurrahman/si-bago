@@ -92,7 +92,7 @@ foreach ($kategori_etno as $kat) {
     margin-bottom: 20px;
 }
 .etno-text h5 {
-    color: #d97634;
+    color: #2C3E50;
     font-weight: 700;
     margin-bottom: 15px;
     font-size: 1.2rem;
