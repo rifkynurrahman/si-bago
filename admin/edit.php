@@ -65,14 +65,15 @@ if (isset($_POST['simpan'])) {
     <link href="../assets/css/style.css" rel="stylesheet">
     <style>
         .edit-header {
-            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            /* Mengubah gradasi cokelat menjadi gradasi biru cerah khas SI-BAGO */
+            background: linear-gradient(135deg, #7FA9D8 0%, #A2C2E8 100%);
             color: white;
             padding: 2rem 0;
             margin-bottom: 2rem;
         }
         .form-label {
             font-weight: 600;
-            color: #8B4513;
+            color: #4A5568;
         }
         .char-counter {
             font-size: 0.875rem;
@@ -80,20 +81,24 @@ if (isset($_POST['simpan'])) {
             float: right;
         }
         .btn-save {
-            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            /* Mengubah warna tombol simpan menjadi biru cerah */
+            background: linear-gradient(45deg, #4A90E2, #7FA9D8);
             border: none;
             color: white;
             padding: 0.75rem 2rem;
             font-weight: 600;
+            transition: all 0.3s ease;
         }
         .btn-save:hover {
-            background: linear-gradient(45deg, #F7931E, #FF6B35);
+            background: linear-gradient(45deg, #357ABD, #4A90E2);
             color: white;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
         }
         
         /* Photo Gallery Styles */
         .upload-area {
-            border: 2px dashed #D2691E;
+            /* Mengubah border putus-putus menjadi warna biru */
+            border: 2px dashed #7FA9D8;
             border-radius: 12px;
             padding: 40px;
             text-align: center;
@@ -103,13 +108,13 @@ if (isset($_POST['simpan'])) {
         }
         
         .upload-area:hover {
-            background-color: #fff5f0;
-            border-color: #8B4513;
+            background-color: #f0f7ff;
+            border-color: #4A90E2;
         }
         
         .upload-area.dragover {
-            background-color: #ffe6d9;
-            border-color: #8B4513;
+            background-color: #e1f0ff;
+            border-color: #4A90E2;
         }
         
         .photo-gallery {
@@ -164,6 +169,11 @@ if (isset($_POST['simpan'])) {
             max-height: 150px;
             margin: 10px;
             border-radius: 8px;
+        }
+        
+        /* Penyesuaian warna teks panduan agar senada dengan warna biru */
+        .card.mt-4 {
+            border-radius: 15px;
         }
     </style>
 </head>
@@ -292,9 +302,9 @@ if (isset($_POST['simpan'])) {
                 </div>
 
                 <!-- Info Box -->
-                <div class="card mt-4 border-0" style="background: linear-gradient(135deg, rgba(139,69,19,0.05) 0%, rgba(210,105,30,0.05) 100%); border-radius: 15px;">
-                    <div class="card-body">
-                        <h6 class="fw-bold" style="color: #8B4513;">
+                <div class="card mt-4 border-0" style="background: linear-gradient(135deg, rgba(74,144,226,0.05) 0%, rgba(162,194,232,0.1) 100%); border-radius: 15px;">
+                     <div class="card-body">
+                        <h6 class="fw-bold" style="color: #357ABD;">
                             <i class="fas fa-question-circle"></i> Panduan Edit Konten
                         </h6>
                         <ul class="mb-0 small">
