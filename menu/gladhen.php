@@ -48,12 +48,12 @@ $foto_cakra   = array_slice($foto_gallery, $jumlah_gladhen);
 .gladhen-section:last-child { border-bottom: none; margin-bottom: 0; }
 
 .gladhen-title {
-    color: #8B4513;
+    color: #2C3E50;
     font-weight: 700;
     font-size: 1.3rem;
     margin-bottom: 15px;
     padding-left: 12px;
-    border-left: 4px solid #D2691E;
+    border-left: 4px solid #2C3E50;
 }
 
 .gladhen-text {
@@ -100,7 +100,7 @@ $foto_cakra   = array_slice($foto_gallery, $jumlah_gladhen);
 .gallery-label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #8B4513;
+    color: #2C3E50;
     margin-bottom: 12px;
     display: flex;
     align-items: center;
@@ -111,7 +111,7 @@ $foto_cakra   = array_slice($foto_gallery, $jumlah_gladhen);
     content: '';
     display: inline-block;
     width: 20px; height: 3px;
-    background: #D2691E;
+    background: #2C3E50;
     border-radius: 2px;
 }
 
